@@ -57,7 +57,39 @@ class MainViewController: UIViewController, UINavigationBarDelegate, UIImagePick
 extension MainViewController {
    
     @IBAction func cameraButton(_ sender: UIBarItem) {
-        
-        present(imagePicker, animated: true, completion: nil)
+        addingSheet()
+        //present(imagePicker, animated: true, completion: nil)
     }
+}
+
+
+
+//MARK: - overload method for vc
+
+
+
+
+//MARK: - alert popup
+extension MainViewController {
+    
+    func addingSheet(){
+               let actionSheet = UIAlertController(title: "Photo Source", message: "choose your source", preferredStyle: .actionSheet)
+               
+               actionSheet.addAction(UIAlertAction(title: "Photo Album", style: .default, handler: { (UIAlertAction) in
+                   self.imagePicker.sourceType = .savedPhotosAlbum
+                   self.present(self.imagePicker, animated: true, completion: nil)
+               }))
+               
+               actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (UIAlertAction) in
+                   self.imagePicker.sourceType = .camera
+                   self.present(self.imagePicker, animated: true, completion: nil)
+               }))
+               
+              
+               
+               
+               actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+               self.present(actionSheet, animated: true, completion: nil)
+            
+           }
 }

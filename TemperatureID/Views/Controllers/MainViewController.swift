@@ -26,7 +26,7 @@ class MainViewController: UIViewController, UINavigationBarDelegate, UIImagePick
                 fatalError("cannot conver image")
             }
             
-            CameraViewModel.detect(image: convertCIImage, inputModel: Inceptionv3().model, navigationController: navigationController!, title: navigationItem)
+            CameraViewModel.detect(image: convertCIImage, inputModel: TemperaturesIDML2().model, navigationController: navigationController!, title: navigationItem)
             imageView.image = userPickImage
         }
         imagePicker.dismiss(animated: true, completion: nil)
